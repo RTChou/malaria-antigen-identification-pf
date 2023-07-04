@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 1 Data engineering | Malaria vaccine antigen identification for Plasmodium falciparum</title>
+  <meta name="description" content="Section 1 Data engineering | Malaria vaccine antigen identification for Plasmodium falciparum" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 1 Data engineering | Malaria vaccine antigen identification for Plasmodium falciparum" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 1 Data engineering | Malaria vaccine antigen identification for Plasmodium falciparum" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2023-04-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="id_02_model_training.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/dt-ext-fixedcolumns-1.11.3/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedcolumns-1.11.3/js/dataTables.fixedColumns.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<!-- https://stackoverflow.com/questions/45360998/code-folding-in-bookdown -->
+<script type="text/javascript" src="js/transition.js"></script>
+<script type="text/javascript" src="js/dropdown.js"></script>
+<script>
+var str = '<div class="btn-group pull-right" style="position: fixed; right: 50px; top: 10px; z-index: 200"><button type="button" class="btn btn-default btn-xs dropdown-toggle" id="allCodeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-_extension-text-contrast=""><span>Code</span> <span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>';
+document.write(str);
+</script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "hide");
+});
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><i>Positive-unlabeled learning for Pf RV</i></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html"><i class="fa fa-check"></i><b>1</b> Data engineering</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#purf-package-installization"><i class="fa fa-check"></i><b>1.1</b> <code>purf</code> package installization</a></li>
+<li class="chapter" data-level="1.2" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#retrieving-p.-falciparum-protein-variables"><i class="fa fa-check"></i><b>1.2</b> Retrieving <em>P. falciparum</em> protein variables</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#immunological-data-sets"><i class="fa fa-check"></i><b>1.2.1</b> Immunological data sets</a></li>
+<li class="chapter" data-level="1.2.2" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#proteomic-data-sets"><i class="fa fa-check"></i><b>1.2.2</b> Proteomic data sets</a></li>
+<li class="chapter" data-level="1.2.3" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#structural-data-sets"><i class="fa fa-check"></i><b>1.2.3</b> Structural data sets</a></li>
+<li class="chapter" data-level="1.2.4" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#genomic-data-sets"><i class="fa fa-check"></i><b>1.2.4</b> Genomic data sets</a></li>
+<li class="chapter" data-level="1.2.5" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#final-assembly"><i class="fa fa-check"></i><b>1.2.5</b> Final assembly</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#generating-ml-input"><i class="fa fa-check"></i><b>1.3</b> Generating ML input</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="id_02_model_training.html"><a href="id_02_model_training.html"><i class="fa fa-check"></i><b>2</b> Model training</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#simulation-experiment-with-99-unlabeled-data-set."><i class="fa fa-check"></i><b>2.1</b> Simulation experiment with 99% unlabeled data set.</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#analysis"><i class="fa fa-check"></i><b>2.1.1</b> Analysis</a></li>
+<li class="chapter" data-level="2.1.2" data-path="id_02_model_training.html"><a href="id_02_model_training.html#plotting"><i class="fa fa-check"></i><b>2.1.2</b> Plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="id_02_model_training.html"><a href="id_02_model_training.html#hyper-parameter-tuning-for-purf"><i class="fa fa-check"></i><b>2.2</b> Hyper-parameter tuning for PURF</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#analysis-1"><i class="fa fa-check"></i><b>2.2.1</b> Analysis</a></li>
+<li class="chapter" data-level="2.2.2" data-path="id_02_model_training.html"><a href="id_02_model_training.html#plotting-1"><i class="fa fa-check"></i><b>2.2.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="2.2.2.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#bimodal-distribution-plot"><i class="fa fa-check"></i><b>2.2.2.1</b> Bimodal distribution plot</a></li>
+<li class="chapter" data-level="2.2.2.2" data-path="id_02_model_training.html"><a href="id_02_model_training.html#known-antigen-ranking"><i class="fa fa-check"></i><b>2.2.2.2</b> Known antigen ranking</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="id_02_model_training.html"><a href="id_02_model_training.html#variable-space-weighting"><i class="fa fa-check"></i><b>2.3</b> Variable space weighting</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#analysis-2"><i class="fa fa-check"></i><b>2.3.1</b> Analysis</a></li>
+<li class="chapter" data-level="2.3.2" data-path="id_02_model_training.html"><a href="id_02_model_training.html#plotting-2"><i class="fa fa-check"></i><b>2.3.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="2.3.2.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#bimodal-distribution-plot-1"><i class="fa fa-check"></i><b>2.3.2.1</b> Bimodal distribution plot</a></li>
+<li class="chapter" data-level="2.3.2.2" data-path="id_02_model_training.html"><a href="id_02_model_training.html#known-antigen-ranking-1"><i class="fa fa-check"></i><b>2.3.2.2</b> Known antigen ranking</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html"><i class="fa fa-check"></i><b>3</b> Candidate prioritization</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#jackknife-based-validation-of-purf-models"><i class="fa fa-check"></i><b>3.1</b> Jackknife-based validation of PURF models</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#analysis-3"><i class="fa fa-check"></i><b>3.1.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1.1.1" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#training-on-whole-data-set"><i class="fa fa-check"></i><b>3.1.1.1</b> Training on whole data set</a></li>
+<li class="chapter" data-level="3.1.1.2" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#validation-for-purf-without-tree-filtering"><i class="fa fa-check"></i><b>3.1.1.2</b> Validation for PURF without tree filtering</a></li>
+<li class="chapter" data-level="3.1.1.3" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#validation-for-purf-with-tree-filtering"><i class="fa fa-check"></i><b>3.1.1.3</b> Validation for PURF with tree filtering</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.2" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#plotting-3"><i class="fa fa-check"></i><b>3.1.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="3.1.2.1" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#plot-score-distribution"><i class="fa fa-check"></i><b>3.1.2.1</b> Plot score distribution</a></li>
+<li class="chapter" data-level="3.1.2.2" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#percent-rank-for-labeled-positives"><i class="fa fa-check"></i><b>3.1.2.2</b> Percent rank for labeled positives</a></li>
+<li class="chapter" data-level="3.1.2.3" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#comparison-of-known-antigens"><i class="fa fa-check"></i><b>3.1.2.3</b> Comparison of known antigens</a></li>
+<li class="chapter" data-level="3.1.2.4" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#comparison-of-top-200-candidates"><i class="fa fa-check"></i><b>3.1.2.4</b> Comparison of top 200 candidates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#model-interpretation"><i class="fa fa-check"></i><b>3.2</b> Model interpretation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#analysis-4"><i class="fa fa-check"></i><b>3.2.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="3.2.1.1" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#variable-importance"><i class="fa fa-check"></i><b>3.2.1.1</b> Variable importance</a></li>
+<li class="chapter" data-level="3.2.1.2" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#wilcoxon-test"><i class="fa fa-check"></i><b>3.2.1.2</b> Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2.2" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#plotting-4"><i class="fa fa-check"></i><b>3.2.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="3.2.2.1" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#variable-importance-1"><i class="fa fa-check"></i><b>3.2.2.1</b> Variable importance</a></li>
+<li class="chapter" data-level="3.2.2.2" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#group-variable-importance"><i class="fa fa-check"></i><b>3.2.2.2</b> Group variable importance</a></li>
+<li class="chapter" data-level="3.2.2.3" data-path="id_03_candidate_prioritization.html"><a href="id_03_candidate_prioritization.html#wilcoxon-test-1"><i class="fa fa-check"></i><b>3.2.2.3</b> Wilcoxon test</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html"><i class="fa fa-check"></i><b>4</b> Candidate antigen clustering</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#clustering-analysis-of-the-proximity-matrix-from-the-tree-filtered-purf-model"><i class="fa fa-check"></i><b>4.1</b> Clustering analysis of the proximity matrix from the tree-filtered PURF model</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#analysis-5"><i class="fa fa-check"></i><b>4.1.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1.1.1" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#multi-dimensional-scaling"><i class="fa fa-check"></i><b>4.1.1.1</b> Multi-dimensional scaling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.1.2" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#plotting-5"><i class="fa fa-check"></i><b>4.1.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="4.1.2.1" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#clustering-on-candidate-antigens"><i class="fa fa-check"></i><b>4.1.2.1</b> Clustering on candidate antigens</a></li>
+<li class="chapter" data-level="4.1.2.2" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#difference-in-scores"><i class="fa fa-check"></i><b>4.1.2.2</b> Difference in scores</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#comparison-of-the-candidate-clustering-groups"><i class="fa fa-check"></i><b>4.2</b> Comparison of the candidate clustering groups</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#plotting-6"><i class="fa fa-check"></i><b>4.2.1</b> Plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#important-variables-for-candidate-clustering-groups"><i class="fa fa-check"></i><b>4.3</b> Important variables for candidate clustering groups</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#analysis-6"><i class="fa fa-check"></i><b>4.3.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="4.3.1.1" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#variable-importance-2"><i class="fa fa-check"></i><b>4.3.1.1</b> Variable importance</a></li>
+<li class="chapter" data-level="4.3.1.2" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#wilcoxon-test-2"><i class="fa fa-check"></i><b>4.3.1.2</b> Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3.2" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#plotting-7"><i class="fa fa-check"></i><b>4.3.2</b> Plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="id_04_candidate_antigen_clustering.html"><a href="id_04_candidate_antigen_clustering.html#comparison-of-important-variables"><i class="fa fa-check"></i><b>4.4</b> Comparison of important variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html"><i class="fa fa-check"></i><b>5</b> Further characterization</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html#gene-ontology-analysis"><i class="fa fa-check"></i><b>5.1</b> Gene ontology analysis</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html#analysis-7"><i class="fa fa-check"></i><b>5.1.1</b> Analysis</a></li>
+<li class="chapter" data-level="5.1.2" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html#plotting-8"><i class="fa fa-check"></i><b>5.1.2</b> Plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html#candidate-antigen-characterization"><i class="fa fa-check"></i><b>5.2</b> Candidate antigen characterization</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html#analysis-8"><i class="fa fa-check"></i><b>5.2.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="5.2.1.1" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html#down-selection-with-essential-genes"><i class="fa fa-check"></i><b>5.2.1.1</b> Down-selection with essential genes</a></li>
+<li class="chapter" data-level="5.2.1.2" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html#characterization-using-scrna-seq"><i class="fa fa-check"></i><b>5.2.1.2</b> Characterization using scRNA-seq</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2.2" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html#processing-table"><i class="fa fa-check"></i><b>5.2.2</b> Processing table</a></li>
+<li class="chapter" data-level="5.2.3" data-path="id_05_further_characterization.html"><a href="id_05_further_characterization.html#plotting-9"><i class="fa fa-check"></i><b>5.2.3</b> Plotting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="id_06_summary_of_candidates.html"><a href="id_06_summary_of_candidates.html"><i class="fa fa-check"></i><b>6</b> Summary of candidates</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Malaria vaccine antigen identification for <em>Plasmodium falciparum</em></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="id_01_data_engineering" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Section 1</span> Data engineering<a href="id_01_data_engineering.html#id_01_data_engineering" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="purf-package-installization" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> <code>purf</code> package installization<a href="id_01_data_engineering.html#purf-package-installization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>purf</code> is a Python package that adapts the ensemble and tree modules from <code>scikit-learn</code> (version 0.24.2). The package implements and modifies the positive-unlabeled random forest (PURF) algorithm proposed by Li and Hua <span class="citation">(<a href="#ref-li2014towards" role="doc-biblioref">Li and Hua 2014</a>; <a href="#ref-denis2005learning" role="doc-biblioref">Denis, Gilleron, and Letouzey 2005</a>; <a href="#ref-de1999positive" role="doc-biblioref">De Comité et al. 1999</a>)</span>.</p>
+<p><strong>In bash: </strong></p>
+<ol style="list-style-type: decimal">
+<li>Create and activate Conda environment</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash fold-show"><code class="sourceCode bash"><span id="cb1-1"><a href="id_01_data_engineering.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> purf scikit-learn=0.24.2 numpy=1.19.0 cython=0.29.21 pandas=1.3.2</span>
+<span id="cb1-2"><a href="id_01_data_engineering.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate purf</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Download package</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash fold-show"><code class="sourceCode bash"><span id="cb2-1"><a href="id_01_data_engineering.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> purf</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Install package</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash fold-show"><code class="sourceCode bash"><span id="cb3-1"><a href="id_01_data_engineering.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> setup.py install</span></code></pre></div>
+</div>
+<div id="retrieving-p.-falciparum-protein-variables" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Retrieving <em>P. falciparum</em> protein variables<a href="id_01_data_engineering.html#retrieving-p.-falciparum-protein-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>In bash: </strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash fold-show"><code class="sourceCode bash"><span id="cb4-1"><a href="id_01_data_engineering.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;create database pf_reverse_vaccinology&quot;</span> <span class="kw">|</span> <span class="ex">mariadb</span> <span class="at">-u</span> <span class="op">&lt;</span>dbuser<span class="op">&gt;</span> -p</span>
+<span id="cb4-2"><a href="id_01_data_engineering.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mariadb</span> <span class="at">-u</span> <span class="op">&lt;</span>dbuser<span class="op">&gt;</span> -p pf_reverse_vaccinology <span class="op">&lt;</span> ./data/supplementary_data_1_pf_reverse_vaccinology.sql</span></code></pre></div>
+<p>Overall database schema:</p>
+<p><img src="figures/Fig%201.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Detailed database structure:</p>
+<p><img src="figures/Supplementary%20Fig%201.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>In R: </strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb5-1"><a href="id_01_data_engineering.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span>
+<span id="cb5-2"><a href="id_01_data_engineering.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb5-3"><a href="id_01_data_engineering.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rlist)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb6-1"><a href="id_01_data_engineering.html#cb6-1" aria-hidden="true" tabindex="-1"></a>output_path <span class="ot">&lt;-</span> <span class="st">&quot;./other_data/pf_assembled_data.csv&quot;</span></span>
+<span id="cb6-2"><a href="id_01_data_engineering.html#cb6-2" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>(), <span class="at">user =</span> <span class="st">&quot;root&quot;</span>, <span class="at">password =</span> <span class="st">&quot;&quot;</span>, <span class="at">dbname =</span> <span class="st">&quot;pf_reverse_vaccinology&quot;</span>)</span>
+<span id="cb6-3"><a href="id_01_data_engineering.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="id_01_data_engineering.html#cb6-4" aria-hidden="true" tabindex="-1"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>(table_name, db) {</span>
+<span id="cb6-5"><a href="id_01_data_engineering.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  sql <span class="ot">&lt;-</span> <span class="fu">sqlInterpolate</span>(db, <span class="st">&quot;SELECT * FROM ?table&quot;</span>, <span class="at">table =</span> <span class="fu">dbQuoteIdentifier</span>(db, table_name))</span>
+<span id="cb6-6"><a href="id_01_data_engineering.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">subset</span>(<span class="fu">dbGetQuery</span>(db, sql), <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(id)))</span>
+<span id="cb6-7"><a href="id_01_data_engineering.html#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-8"><a href="id_01_data_engineering.html#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="id_01_data_engineering.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># protein ID and transcript ID map table</span></span>
+<span id="cb6-10"><a href="id_01_data_engineering.html#cb6-10" aria-hidden="true" tabindex="-1"></a>id_map <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(db, <span class="st">&#39;SELECT dbxref_1.accession AS accession, dbxref_1.dbxref_id AS protein_id FROM dbxref AS dbxref_1</span></span>
+<span id="cb6-11"><a href="id_01_data_engineering.html#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">                         LEFT OUTER JOIN feature AS feature_1 ON dbxref_1.dbxref_id = feature_1.dbxref_id</span></span>
+<span id="cb6-12"><a href="id_01_data_engineering.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">                         LEFT OUTER JOIN cvterm ON feature_1.type_id = cvterm.cvterm_id</span></span>
+<span id="cb6-13"><a href="id_01_data_engineering.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="st">                         LEFT OUTER JOIN feature_relationship ON feature_1.feature_id = feature_relationship.subject_id</span></span>
+<span id="cb6-14"><a href="id_01_data_engineering.html#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="st">                         LEFT OUTER JOIN feature AS feature_2 ON feature_relationship.object_id = feature_2.feature_id</span></span>
+<span id="cb6-15"><a href="id_01_data_engineering.html#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="st">                         LEFT OUTER JOIN dbxref AS dbxref_2 ON feature_2.dbxref_id = dbxref_2.dbxref_id</span></span>
+<span id="cb6-16"><a href="id_01_data_engineering.html#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="st">                         LEFT OUTER JOIN organism ON feature_1.organism_id = organism.organism_id</span></span>
+<span id="cb6-17"><a href="id_01_data_engineering.html#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="st">                         WHERE feature_1.is_obsolete = 0 AND cvterm.name = &quot;polypeptide&quot; AND organism.species=&quot;falciparum_3D7&quot;&#39;</span>)</span></code></pre></div>
+<div id="immunological-data-sets" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Immunological data sets<a href="id_01_data_engineering.html#immunological-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="figures/Supplementary%20Fig%201%20immunological%20data.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>In R: </strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb7-1"><a href="id_01_data_engineering.html#cb7-1" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb7-2"><a href="id_01_data_engineering.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="id_01_data_engineering.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># predivac_processed result for T-cell epitopes</span></span>
+<span id="cb7-4"><a href="id_01_data_engineering.html#cb7-4" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;predivac_processed&quot;</span>, db))</span>
+<span id="cb7-5"><a href="id_01_data_engineering.html#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="id_01_data_engineering.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># bepipred_2_0 result for B-cell epitopes</span></span>
+<span id="cb7-7"><a href="id_01_data_engineering.html#cb7-7" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;bepipred_2_0_processed&quot;</span>, db))</span>
+<span id="cb7-8"><a href="id_01_data_engineering.html#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="id_01_data_engineering.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># bepipred_1_0 result for B-cell epitopes</span></span>
+<span id="cb7-10"><a href="id_01_data_engineering.html#cb7-10" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;bepipred_1_0_processed&quot;</span>, db))</span>
+<span id="cb7-11"><a href="id_01_data_engineering.html#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="id_01_data_engineering.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># abcpred result for B-cell epitopes</span></span>
+<span id="cb7-13"><a href="id_01_data_engineering.html#cb7-13" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;abcpred_processed&quot;</span>, db))</span>
+<span id="cb7-14"><a href="id_01_data_engineering.html#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="id_01_data_engineering.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ctlpred result for cytotoxic T-cell epitopes</span></span>
+<span id="cb7-16"><a href="id_01_data_engineering.html#cb7-16" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;ctlpred_processed&quot;</span>, db))</span>
+<span id="cb7-17"><a href="id_01_data_engineering.html#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="id_01_data_engineering.html#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># il_10pred result for interleukine-10 inducing epitopes</span></span>
+<span id="cb7-19"><a href="id_01_data_engineering.html#cb7-19" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;il_10pred_processed&quot;</span>, db))</span>
+<span id="cb7-20"><a href="id_01_data_engineering.html#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="id_01_data_engineering.html#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># ifnepitope result for IFN-gamma inducing epitopes</span></span>
+<span id="cb7-22"><a href="id_01_data_engineering.html#cb7-22" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;ifnepitope_processed&quot;</span>, db))</span>
+<span id="cb7-23"><a href="id_01_data_engineering.html#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="id_01_data_engineering.html#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># tappred for high binding affinity epitopes toward the TAP transporter</span></span>
+<span id="cb7-25"><a href="id_01_data_engineering.html#cb7-25" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;tappred_processed&quot;</span>, db))</span>
+<span id="cb7-26"><a href="id_01_data_engineering.html#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="id_01_data_engineering.html#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># mhc_i for MHC class I epitopes</span></span>
+<span id="cb7-28"><a href="id_01_data_engineering.html#cb7-28" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;mhc_i&quot;</span>, db))</span>
+<span id="cb7-29"><a href="id_01_data_engineering.html#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="id_01_data_engineering.html#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co"># mhc_ii for MHC class II epitopes</span></span>
+<span id="cb7-31"><a href="id_01_data_engineering.html#cb7-31" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;mhc_ii&quot;</span>, db))</span>
+<span id="cb7-32"><a href="id_01_data_engineering.html#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="id_01_data_engineering.html#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co"># antigenicity</span></span>
+<span id="cb7-34"><a href="id_01_data_engineering.html#cb7-34" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;antigenicity&quot;</span>, db))</span>
+<span id="cb7-35"><a href="id_01_data_engineering.html#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="id_01_data_engineering.html#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co"># immunogenicity</span></span>
+<span id="cb7-37"><a href="id_01_data_engineering.html#cb7-37" aria-hidden="true" tabindex="-1"></a>immu <span class="ot">&lt;-</span> <span class="fu">list.append</span>(immu, <span class="fu">get_data</span>(<span class="st">&quot;immunogenicity&quot;</span>, db))</span>
+<span id="cb7-38"><a href="id_01_data_engineering.html#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="id_01_data_engineering.html#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="co"># merge immunological data sets</span></span>
+<span id="cb7-40"><a href="id_01_data_engineering.html#cb7-40" aria-hidden="true" tabindex="-1"></a>immunological_ds <span class="ot">&lt;-</span> id_map[<span class="st">&quot;protein_id&quot;</span>]</span>
+<span id="cb7-41"><a href="id_01_data_engineering.html#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (ds <span class="cf">in</span> immu) {</span>
+<span id="cb7-42"><a href="id_01_data_engineering.html#cb7-42" aria-hidden="true" tabindex="-1"></a>  immunological_ds <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> immunological_ds, <span class="at">y =</span> ds, <span class="at">by =</span> <span class="st">&quot;protein_id&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-43"><a href="id_01_data_engineering.html#cb7-43" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="proteomic-data-sets" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Proteomic data sets<a href="id_01_data_engineering.html#proteomic-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="figures/Supplementary%20Fig%201%20proteomic%20data.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>In R: </strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb8-1"><a href="id_01_data_engineering.html#cb8-1" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb8-2"><a href="id_01_data_engineering.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="id_01_data_engineering.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cello result for subcellualr localization</span></span>
+<span id="cb8-4"><a href="id_01_data_engineering.html#cb8-4" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">subset</span>(<span class="fu">get_data</span>(<span class="st">&quot;cello&quot;</span>, db), <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(location_id)))</span>
+<span id="cb8-5"><a href="id_01_data_engineering.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="id_01_data_engineering.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># maap result for malaria adhesin/adhesin-like proteins</span></span>
+<span id="cb8-7"><a href="id_01_data_engineering.html#cb8-7" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">get_data</span>(<span class="st">&quot;maap&quot;</span>, db))</span>
+<span id="cb8-8"><a href="id_01_data_engineering.html#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="id_01_data_engineering.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># peptides result for physicochemical properties</span></span>
+<span id="cb8-10"><a href="id_01_data_engineering.html#cb8-10" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">get_data</span>(<span class="st">&quot;r_peptides&quot;</span>, db))</span>
+<span id="cb8-11"><a href="id_01_data_engineering.html#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="id_01_data_engineering.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># protr result for physicochemical properties</span></span>
+<span id="cb8-13"><a href="id_01_data_engineering.html#cb8-13" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">get_data</span>(<span class="st">&quot;protr&quot;</span>, db))</span>
+<span id="cb8-14"><a href="id_01_data_engineering.html#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="id_01_data_engineering.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># hydrophilicity</span></span>
+<span id="cb8-16"><a href="id_01_data_engineering.html#cb8-16" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">get_data</span>(<span class="st">&quot;hydrophilicity&quot;</span>, db))</span>
+<span id="cb8-17"><a href="id_01_data_engineering.html#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="id_01_data_engineering.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># predgpi result for gpi anchors prediction</span></span>
+<span id="cb8-19"><a href="id_01_data_engineering.html#cb8-19" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">get_data</span>(<span class="st">&quot;predgpi&quot;</span>, db))</span>
+<span id="cb8-20"><a href="id_01_data_engineering.html#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="id_01_data_engineering.html#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># signalp result for signal cleavage prediction</span></span>
+<span id="cb8-22"><a href="id_01_data_engineering.html#cb8-22" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">subset</span>(<span class="fu">get_data</span>(<span class="st">&quot;signalp&quot;</span>, db), <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(is_secprotein, cleavage_site, cs_probability)))</span>
+<span id="cb8-23"><a href="id_01_data_engineering.html#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="id_01_data_engineering.html#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># abpred results for amino acid compositions and other variables</span></span>
+<span id="cb8-25"><a href="id_01_data_engineering.html#cb8-25" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">get_data</span>(<span class="st">&quot;abpred&quot;</span>, db))</span>
+<span id="cb8-26"><a href="id_01_data_engineering.html#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="id_01_data_engineering.html#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co"># glycoep results for N-linked and O-linked glycosylation</span></span>
+<span id="cb8-28"><a href="id_01_data_engineering.html#cb8-28" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">get_data</span>(<span class="st">&quot;glycoep_processed&quot;</span>, db))</span>
+<span id="cb8-29"><a href="id_01_data_engineering.html#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-30"><a href="id_01_data_engineering.html#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co"># blastp result for similarity to human proteins</span></span>
+<span id="cb8-31"><a href="id_01_data_engineering.html#cb8-31" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">list.append</span>(pro, <span class="fu">get_data</span>(<span class="st">&quot;blastp&quot;</span>, db))</span>
+<span id="cb8-32"><a href="id_01_data_engineering.html#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="id_01_data_engineering.html#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co"># merge proteomic data sets</span></span>
+<span id="cb8-34"><a href="id_01_data_engineering.html#cb8-34" aria-hidden="true" tabindex="-1"></a>proteomic_ds <span class="ot">&lt;-</span> id_map[<span class="st">&quot;protein_id&quot;</span>]</span>
+<span id="cb8-35"><a href="id_01_data_engineering.html#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (ds <span class="cf">in</span> pro) {</span>
+<span id="cb8-36"><a href="id_01_data_engineering.html#cb8-36" aria-hidden="true" tabindex="-1"></a>  proteomic_ds <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> proteomic_ds, <span class="at">y =</span> ds, <span class="at">by =</span> <span class="st">&quot;protein_id&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-37"><a href="id_01_data_engineering.html#cb8-37" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="structural-data-sets" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Structural data sets<a href="id_01_data_engineering.html#structural-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="figures/Supplementary%20Fig%201%20structural%20data.png" width="25%" style="display: block; margin: auto;" /></p>
+<p><strong>In R: </strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb9-1"><a href="id_01_data_engineering.html#cb9-1" aria-hidden="true" tabindex="-1"></a>struc <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb9-2"><a href="id_01_data_engineering.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="id_01_data_engineering.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tmhmm result for transmembrane helices prediction</span></span>
+<span id="cb9-4"><a href="id_01_data_engineering.html#cb9-4" aria-hidden="true" tabindex="-1"></a>struc <span class="ot">&lt;-</span> <span class="fu">list.append</span>(struc, <span class="fu">get_data</span>(<span class="st">&quot;tmhmm_processed&quot;</span>, db))</span>
+<span id="cb9-5"><a href="id_01_data_engineering.html#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="id_01_data_engineering.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># seg result for sequence complexity</span></span>
+<span id="cb9-7"><a href="id_01_data_engineering.html#cb9-7" aria-hidden="true" tabindex="-1"></a>struc <span class="ot">&lt;-</span> <span class="fu">list.append</span>(struc, <span class="fu">get_data</span>(<span class="st">&quot;seg&quot;</span>, db))</span>
+<span id="cb9-8"><a href="id_01_data_engineering.html#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="id_01_data_engineering.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># seg + tmhmm result</span></span>
+<span id="cb9-10"><a href="id_01_data_engineering.html#cb9-10" aria-hidden="true" tabindex="-1"></a>struc <span class="ot">&lt;-</span> <span class="fu">list.append</span>(struc, <span class="fu">get_data</span>(<span class="st">&quot;seg_processed&quot;</span>, db))</span>
+<span id="cb9-11"><a href="id_01_data_engineering.html#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="id_01_data_engineering.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># b_cell_epitope_methods for structural predictions</span></span>
+<span id="cb9-13"><a href="id_01_data_engineering.html#cb9-13" aria-hidden="true" tabindex="-1"></a>struc <span class="ot">&lt;-</span> <span class="fu">list.append</span>(struc, <span class="fu">get_data</span>(<span class="st">&quot;beta_turn&quot;</span>, db))</span>
+<span id="cb9-14"><a href="id_01_data_engineering.html#cb9-14" aria-hidden="true" tabindex="-1"></a>struc <span class="ot">&lt;-</span> <span class="fu">list.append</span>(struc, <span class="fu">get_data</span>(<span class="st">&quot;surface_accessibility&quot;</span>, db))</span>
+<span id="cb9-15"><a href="id_01_data_engineering.html#cb9-15" aria-hidden="true" tabindex="-1"></a>struc <span class="ot">&lt;-</span> <span class="fu">list.append</span>(struc, <span class="fu">get_data</span>(<span class="st">&quot;flexibility&quot;</span>, db))</span>
+<span id="cb9-16"><a href="id_01_data_engineering.html#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="id_01_data_engineering.html#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># merge structural analysis data sets</span></span>
+<span id="cb9-18"><a href="id_01_data_engineering.html#cb9-18" aria-hidden="true" tabindex="-1"></a>structural_ds <span class="ot">&lt;-</span> id_map[<span class="st">&quot;protein_id&quot;</span>]</span>
+<span id="cb9-19"><a href="id_01_data_engineering.html#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (ds <span class="cf">in</span> struc) {</span>
+<span id="cb9-20"><a href="id_01_data_engineering.html#cb9-20" aria-hidden="true" tabindex="-1"></a>  structural_ds <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> structural_ds, <span class="at">y =</span> ds, <span class="at">by =</span> <span class="st">&quot;protein_id&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-21"><a href="id_01_data_engineering.html#cb9-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="genomic-data-sets" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> Genomic data sets<a href="id_01_data_engineering.html#genomic-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="figures/Supplementary%20Fig%201%20genomic%20data.png" width="40%" style="display: block; margin: auto;" /></p>
+<p><strong>In R: </strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb10-1"><a href="id_01_data_engineering.html#cb10-1" aria-hidden="true" tabindex="-1"></a>geno <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb10-2"><a href="id_01_data_engineering.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="id_01_data_engineering.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># snp result</span></span>
+<span id="cb10-4"><a href="id_01_data_engineering.html#cb10-4" aria-hidden="true" tabindex="-1"></a>geno <span class="ot">&lt;-</span> <span class="fu">list.append</span>(geno, <span class="fu">get_data</span>(<span class="st">&quot;snp&quot;</span>, db))</span>
+<span id="cb10-5"><a href="id_01_data_engineering.html#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="id_01_data_engineering.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># merge structural analysis data sets</span></span>
+<span id="cb10-7"><a href="id_01_data_engineering.html#cb10-7" aria-hidden="true" tabindex="-1"></a>genomic_ds <span class="ot">&lt;-</span> id_map[<span class="st">&quot;protein_id&quot;</span>]</span>
+<span id="cb10-8"><a href="id_01_data_engineering.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (ds <span class="cf">in</span> geno) {</span>
+<span id="cb10-9"><a href="id_01_data_engineering.html#cb10-9" aria-hidden="true" tabindex="-1"></a>  genomic_ds <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> genomic_ds, <span class="at">y =</span> ds, <span class="at">by =</span> <span class="st">&quot;protein_id&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-10"><a href="id_01_data_engineering.html#cb10-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="final-assembly" class="section level3 hasAnchor" number="1.2.5">
+<h3><span class="header-section-number">1.2.5</span> Final assembly<a href="id_01_data_engineering.html#final-assembly" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>In R: </strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb11-1"><a href="id_01_data_engineering.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prepare predictor variables</span></span>
+<span id="cb11-2"><a href="id_01_data_engineering.html#cb11-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> immunological_ds, <span class="at">y =</span> proteomic_ds, <span class="at">by =</span> <span class="st">&quot;protein_id&quot;</span>, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-3"><a href="id_01_data_engineering.html#cb11-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> data, <span class="at">y =</span> structural_ds, <span class="at">by =</span> <span class="st">&quot;protein_id&quot;</span>, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-4"><a href="id_01_data_engineering.html#cb11-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> data, <span class="at">y =</span> genomic_ds, <span class="at">by =</span> <span class="st">&quot;protein_id&quot;</span>, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-5"><a href="id_01_data_engineering.html#cb11-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> id_map, <span class="at">y =</span> data, <span class="at">by =</span> <span class="st">&quot;protein_id&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-6"><a href="id_01_data_engineering.html#cb11-6" aria-hidden="true" tabindex="-1"></a>accession <span class="ot">&lt;-</span> data<span class="sc">$</span>accession</span>
+<span id="cb11-7"><a href="id_01_data_engineering.html#cb11-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">subset</span>(data, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(protein_id, accession))</span>
+<span id="cb11-8"><a href="id_01_data_engineering.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(data) <span class="ot">&lt;-</span> accession</span>
+<span id="cb11-9"><a href="id_01_data_engineering.html#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="id_01_data_engineering.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># write to output</span></span>
+<span id="cb11-11"><a href="id_01_data_engineering.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data, output_path)</span>
+<span id="cb11-12"><a href="id_01_data_engineering.html#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="id_01_data_engineering.html#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># close database connection</span></span>
+<span id="cb11-14"><a href="id_01_data_engineering.html#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(db)</span></code></pre></div>
+</div>
+</div>
+<div id="generating-ml-input" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Generating ML input<a href="id_01_data_engineering.html#generating-ml-input" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>In R: </strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb12-1"><a href="id_01_data_engineering.html#cb12-1" aria-hidden="true" tabindex="-1"></a>response_var <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pf_antigen_labels.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb12-2"><a href="id_01_data_engineering.html#cb12-2" aria-hidden="true" tabindex="-1"></a>predictor_vars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pf_assembled_data.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="id_01_data_engineering.html#cb12-3" aria-hidden="true" tabindex="-1"></a>ml_input <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> response_var, <span class="at">y =</span> predictor_vars, <span class="at">by =</span> <span class="st">&quot;row.names&quot;</span>, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-4"><a href="id_01_data_engineering.html#cb12-4" aria-hidden="true" tabindex="-1"></a>row_names <span class="ot">&lt;-</span> ml_input<span class="sc">$</span>Row.names</span>
+<span id="cb12-5"><a href="id_01_data_engineering.html#cb12-5" aria-hidden="true" tabindex="-1"></a>ml_input <span class="ot">&lt;-</span> <span class="fu">subset</span>(ml_input, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(Row.names))</span>
+<span id="cb12-6"><a href="id_01_data_engineering.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(ml_input) <span class="ot">&lt;-</span> row_names</span>
+<span id="cb12-7"><a href="id_01_data_engineering.html#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="id_01_data_engineering.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># write to output</span></span>
+<span id="cb12-9"><a href="id_01_data_engineering.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(ml_input, <span class="st">&quot;./data/supplementary_data_3_pf_ml_input.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb13-1"><a href="id_01_data_engineering.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.2.3 (2023-03-15)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Big Sur ... 10.16
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] rlist_0.4.6.2  DBI_1.1.3      RMariaDB_1.2.2
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.9        bslib_0.4.0       compiler_4.2.3    jquerylib_0.1.4  
+##  [5] highr_0.9         R.methodsS3_1.8.2 R.utils_2.12.0    tools_4.2.3      
+##  [9] digest_0.6.29     bit_4.0.4         jsonlite_1.8.0    evaluate_0.16    
+## [13] lifecycle_1.0.3   R.cache_0.16.0    pkgconfig_2.0.3   rlang_1.1.0      
+## [17] cli_3.6.1         rstudioapi_0.14   yaml_2.3.5        xfun_0.32        
+## [21] fastmap_1.1.0     styler_1.8.0      stringr_1.4.1     knitr_1.40       
+## [25] sass_0.4.2        vctrs_0.6.2       hms_1.1.2         bit64_4.0.5      
+## [29] data.table_1.14.2 R6_2.5.1          rmarkdown_2.16    bookdown_0.28    
+## [33] purrr_0.3.4       magrittr_2.0.3    codetools_0.2-19  htmltools_0.5.3  
+## [37] ellipsis_0.3.2    stringi_1.7.8     cachem_1.0.6      R.oo_1.25.0</code></pre>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-de1999positive" class="csl-entry">
+De Comité, Francesco, François Denis, Rémi Gilleron, and Fabien Letouzey. 1999. <span>“Positive and Unlabeled Examples Help Learning.”</span> In <em>International Conference on Algorithmic Learning Theory</em>, 219–30. Springer.
+</div>
+<div id="ref-denis2005learning" class="csl-entry">
+Denis, François, Rémi Gilleron, and Fabien Letouzey. 2005. <span>“Learning from Positive and Unlabeled Examples.”</span> <em>Theor Comput Sci</em> 348 (1): 70–83.
+</div>
+<div id="ref-li2014towards" class="csl-entry">
+Li, Chen, and Xue-Liang Hua. 2014. <span>“Towards Positive Unlabeled Learning for Parallel Data Mining: A Random Forest Framework.”</span> In <em>International Conference on Advanced Data Mining and Applications</em>, 573–87. Springer.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="id_02_model_training.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["main_notebook.pdf", "PDF"]],
+"search": false,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
